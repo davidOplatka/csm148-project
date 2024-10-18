@@ -1,0 +1,44 @@
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore virtual environments
+venv/
+.env/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Jupyter Notebook temporary files
+*.nbconvert.ipynb
+
+# Ignore configuration or environment files
+.env
+.env.local
+*.env
+
+# Ignore Jupyter Lab and VSCode settings
+.jupyter/
+.local/
+.vscode/
+
+# Ignore data or model files (optional, customize if needed)
+*.h5
+*.hdf5
+*.pkl
+*.csv
+*.tsv
+*.log
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore temporary files from editors
+*~
+*.swp
