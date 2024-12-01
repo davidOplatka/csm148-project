@@ -11,10 +11,10 @@ def process_categorical_columns(df):
         df.drop(columns = col, inplace=True)
 
     for col in ['Parental_Involvement', 'Access_to_Resources', 'Motivation_Level', 'Family_Income', 'Teacher_Quality']:
-        df[col] = pd.Categorical(df[col], categories=["Low", "Medium", "High"], ordered = True)
+        df[col] = pd.Categorical(df[col], categories=["Low", "Medium", "High"], ordered = True).codes
 
-    df['Peer_Influence'] = pd.Categorical(df['Peer_Influence'], categories=["Negative", "Neutral", "Positive"], ordered = True)    
-    df['Parental_Education_Level'] = pd.Categorical(df['Parental_Education_Level'], categories=["High School", "College", "Postgraduate"], ordered = True)
+    df['Peer_Influence'] = pd.Categorical(df['Peer_Influence'], categories=["Negative", "Neutral", "Positive"], ordered = True).codes
+    df['Parental_Education_Level'] = pd.Categorical(df['Parental_Education_Level'], categories=["High School", "College", "Postgraduate"], ordered = True).codes
     
     df = df[['Hours_Studied', 'Attendance', 'Parental_Involvement', 'Access_to_Resources', 'Extracurricular_Activities_Yes', 'Sleep_Hours',
     'Previous_Scores', 'Motivation_Level', 'Internet_Access_Yes', 'Tutoring_Sessions', 'Family_Income', 'Teacher_Quality',
