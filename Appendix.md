@@ -60,7 +60,7 @@ TODO: Joseph
 
 ## KNN
 
-TODO: Henry
+TODO: Henry tk
 
 ## PCA and Clustering
 
