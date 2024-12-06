@@ -14,7 +14,7 @@ TODO
 ## Key Methodologies
 
 After exploring many different relationships between numeric and categorical variables, our team concluded that a linear model would be the best at predicting a student's exam score.
-In our exploratory data analysis, we observed moderately strong linear associations between a student's exam score and their attendance history (r=###) and hours studied (r=###).
+In our exploratory data analysis, we observed moderately strong linear associations between a student's exam score and their attendance history (r=0.569) and hours studied (r=0.435).
 We also observed differences in students' median exam scores based on categorical variables, such as students' access to resources (students with higher access to resources earned higher median exam scores).
 With these discoveries, our team believed that a linear model would be a simple but effective model for this problem, allowing us to achieve a high overall accuracy and avoid overfitting an unnecessarily complex model.
 
