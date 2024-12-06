@@ -65,7 +65,9 @@ TODO: Henry tk
 ## PCA and Clustering
 
 Our dataset had six numeric features to which we applied principal component analysis.
-Upon doing this, we observed that 98.29% of the variability in these features could be captured by just a single principal component.
+After standardizing the variables, we applied PCA but found no meaningful results.
+Each principal component explained about the same proportion of the total variance, so reducing the dimensionality of these numeric features is not practical.
+These results are unsurprising because we only have 6 numeric features and would hope that they all have meaningful contributions independently to the total variance in the data.
 
 As for clustering, we performed K means clustering with k=2, k=3, and k=4.
 With k=3, we were able to see good separation of the data across the number of tutoring sessions and the class attendace.
@@ -73,8 +75,8 @@ In general, these methods were fairly unsuccessful, achieving silhouette scores 
 Thus, this method was not helpful in predicting the `Exam_Score` from our features.
 Even though we saw some separation across a few of our variables, this can also be captured by the distribution of the variable values themselves as inputs to a model.
 
-Ultimately, PCA was more useful for our projet because it demonstrated that we could reduce the number of numeric variables in our regression model from 6 to 1.
-WE MAY USE PCA IN OUR FINAL MODEL, SO NOTE THAT HERE IF APPROPRIATE.
+Ultimately, PCA was more useful for our projet because it demonstrated that most, if not all, of our numeric features were contributing significant variance to the overall data.
+This told us that our final model would likely include most of these variables (in the end, 5 out of 6 numeric variables were included in our final model).
 
 ## Neural Network
 
