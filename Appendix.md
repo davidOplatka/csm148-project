@@ -82,30 +82,16 @@ This told us that our final model would likely include most of these variables (
 
 The final method we implemented to predict students' Exam Scores was a Multi-Layer Perceptron (MLP) neural network. Below are the key steps of our process:
 
-1. Dataset and Preprocessing
-We used the cleaned dataset `StudentPerformanceFactorsCleaned.csv` and performed further preprocessing before feeding it into the neural network:
-- *Standardization*: Standardized all numerical columns to ensure all features were on the same scale, preventing any one feature from dominating the model.
-- *One-Hot Encoding*: Encoded all categorical columns into numeric form with values of 0 and 1.
-- *Data Splitting*: Split the dataset into training, validation, and test sets in proportions of 60%, 20%, and 20%, respectively.
-- *PyTorch Tensors*: Converted the preprocessed data into PyTorch tensors for compatibility with the neural network.
+1. We used the cleaned dataset `StudentPerformanceFactorsCleaned.csv` and performed further preprocessing before feeding it into the neural network including standardizing all numerical columns to ensure all features were on the same scale, preventing any one feature from dominating the model; one-hot ecoding all categorical columns into numeric form with values of 0 and 1; splitting the dataset into training, validation, and test sets in proportions of 60%, 20%, and 20%, respectively; finally converting the preprocessed data into PyTorch tensors for compatibility with the neural network.
 
-2. Model Architecture
-We defined a **Multi-Layer Perceptron (MLP)** with the following layers:
-- *Input Layer*: Accepts the number of features in the dataset.
-- *Two Hidden Layers*:
-  1. *First Layer*: 128 neurons with ReLU activation and a dropout rate of 30%.
-  2. *Second Layer*: 64 neurons with ReLU activation and a dropout rate of 30%.
-- *Output Layer*: A single neuron to output a continuous value for regression tasks.
+2. Next we create defined the **Multi-Layer Perceptron**: with two hidden layers:
+  * *First Layer*: 128 neurons with ReLU activation and a dropout rate of 30%.
+  * *Second Layer*: 64 neurons with ReLU activation and a dropout rate of 30%.
 
-3. Training Process
-- *Loss Function*: Used *MSE*, suitable for regression tasks.
-- *Optimizer*: Adam optimizer with a learning rate of 0.001, selected after testing alternative rates (0.01, 0.005, and 0.0001).
-- *Batch Size*: Set to 32, balancing performance and computational efficiency.
-- *Epochs and Early Stopping*:
-  - Initial epochs: 2000.
-  - *Early Stopping Mechanism*: Monitored validation loss with a patience threshold of 35 epochs. Training stopped early at **epoch 318** when the validation loss stopped improving.
+3. During the training, we use *MSE* for the loss function and Adam optimizer with a learning rate of 0.01, selected after testing lternative rates (0.01, 0.005, and 0.0001). We choose to set *batch size* to be 32, balacing performance and computational efficiency and choose the number of *epochs* to be 2000.
 
-4. Validation and Evaluation
+4. The process of Validation and Evaluation is:
+At first we have overfiiting issue since we have phenomenon of low loss and high test MSE, therefore, we implement the **early stopping mechanism** which monitored validationed loss with a patience theshold of 35 epochs. 
 During training:
 - At each epoch, the validation loss was calculated and compared to the best validation loss observed so far.
 - If the validation loss did not improve for 35 consecutive epochs, training stopped early to prevent overfitting.
