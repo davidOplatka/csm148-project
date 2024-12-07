@@ -9,7 +9,7 @@ TODO
 
 ## Problem Overview
 
-TODO 
+The goal of this project is to predict students' final exam grades based on various features and data provided in the dataset.
 
 ## Key Methodologies
 
