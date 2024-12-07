@@ -91,14 +91,10 @@ The final method we implemented to predict students' Exam Scores was a Multi-Lay
 3. During the training, we use *MSE* for the loss function and Adam optimizer with a learning rate of 0.01, selected after testing lternative rates (0.01, 0.005, and 0.0001). We choose to set *batch size* to be 32, balacing performance and computational efficiency and choose the number of *epochs* to be 2000.
 
 4. The process of Validation and Evaluation is:
-At first we have overfiiting issue since we have phenomenon of low loss and high test MSE, therefore, we implement the **early stopping mechanism** which monitored validationed loss with a patience theshold of 35 epochs. 
-During training:
-- At each epoch, the validation loss was calculated and compared to the best validation loss observed so far.
-- If the validation loss did not improve for 35 consecutive epochs, training stopped early to prevent overfitting.
+At first we have overfiiting issue since we have phenomenon of low loss and high test MSE, therefore, we implement the **early stopping mechanism** which monitored validationed loss with a patience theshold of 35 epochs. Specifically, if the validation loss did not improve for 35 consecutive epochs, training stopped early to prevent overfitting.
 
 5. Results
-- At *epoch 318*, the training loss was *33.5123*.
-- The final *Mean Squared Error* on the test dataset was *3.8128578662872314*.
+Finall we got that At *epoch 318*, the training loss was *33.5123*. The final *Mean Squared Error* on the test dataset was *3.8128578662872314*.
 
 
 
