@@ -82,7 +82,7 @@ This told us that our final model would likely include most of these variables (
 
 The final method we implemented to predict students' Exam Scores was a Multi-Layer Perceptron (MLP) neural network. Below are the key steps of our process:
 
-### 1. Dataset and Preprocessing
+* 1. Dataset and Preprocessing
 We used the cleaned dataset `StudentPerformanceFactorsCleaned.csv` and performed further preprocessing before feeding it into the neural network:
 - **Standardization**: Standardized all numerical columns to ensure all features were on the same scale, preventing any one feature from dominating the model.
 - **One-Hot Encoding**: Encoded all categorical columns into numeric form with values of 0 and 1.
@@ -90,7 +90,7 @@ We used the cleaned dataset `StudentPerformanceFactorsCleaned.csv` and performed
 - **PyTorch Tensors**: Converted the preprocessed data into PyTorch tensors for compatibility with the neural network.
 
 
-### 2. Model Architecture
+* 2. Model Architecture
 We defined a **Multi-Layer Perceptron (MLP)** with the following layers:
 - **Input Layer**: Accepts the number of features in the dataset.
 - **Two Hidden Layers**:
@@ -98,9 +98,7 @@ We defined a **Multi-Layer Perceptron (MLP)** with the following layers:
   2. **Second Layer**: 64 neurons with ReLU activation and a dropout rate of 30%.
 - **Output Layer**: A single neuron to output a continuous value for regression tasks.
 
----
-
-### 3. Training Process
+* 3. Training Process
 - **Loss Function**: Used **Mean Squared Error (MSE)**, suitable for regression tasks.
 - **Optimizer**: Adam optimizer with a learning rate of 0.001, selected after testing alternative rates (0.01, 0.005, and 0.0001).
 - **Batch Size**: Set to 32, balancing performance and computational efficiency.
@@ -108,16 +106,12 @@ We defined a **Multi-Layer Perceptron (MLP)** with the following layers:
   - Initial epochs: 2000.
   - **Early Stopping Mechanism**: Monitored validation loss with a patience threshold of 35 epochs. Training stopped early at **epoch 318** when the validation loss stopped improving.
 
----
-
-### 4. Validation and Evaluation
+* 4. Validation and Evaluation
 During training:
 - At each epoch, the validation loss was calculated and compared to the best validation loss observed so far.
 - If the validation loss did not improve for 35 consecutive epochs, training stopped early to prevent overfitting.
 
----
-
-### 5. Results
+* 5. Results
 - At **epoch 318**, the training loss was **33.5123**.
 - The final **Mean Squared Error (MSE)** on the test dataset was **3.8128578662872314**.
 
