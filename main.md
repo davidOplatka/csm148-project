@@ -39,7 +39,15 @@ We will further discuss the results of our model in the next section.
 
 ## Results
 
-TODO: Maddox
+In our results we notice that our Ridge model performs exceptionally well, close to the actual exam scores when comparing actual vs. predicted scores, fitting a `y=x` line almost perfectly. With a `R^2` of 0.72, we notice that this model captures our variance quite accurately as well.
+
+Key Metrics:
+* `Ridge CV MSE`: 3.066807
+* `Ridge CV R^2`: 0.719789
+* `LASSO CV MSE`: 3.067022
+* `LASSO CV R^2`: 0.719646
+
+With a nice MSE and R^2 value, our model performs well, especially better than our Lasso model, which is why we pick our Ridge model over our Lasso model. While most predicted scores mostly align with our actual scores, we notice some outliers that are present. A small number of students scored significantly higher than what was predicted, possibly showing factors that influenced score but weren't a feature in the dataset. What this could suggest is that while the model performs overall well, there are opportunities to incorporate additional features or further refine preprocessing, while preventing overfitting as well.
 
 ## How to Reproduce Results
 
