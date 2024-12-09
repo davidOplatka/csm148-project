@@ -56,7 +56,19 @@ This is disucssed in the main document.
 
 ## Logistic Regression
 
-TODO: Joseph
+Logistic regression was used as a binary classification model to predict whether a student would attend a public or private school based on various predictors. The feature selection technique used was Recursive Feature Elimination (RFE). With RFE, the model is iteratively trained on the data, and at each step the least important features (as indicated by the model’s coefficients) are removed. This process continues until only the most influential features remain, helping to simplify the model and potentially improve its performance. From this, the key predictors were: parental involvement, access to resources, and parental education level.
+
+Since these predictors were all categorical variables, they needed to be encoded. We converted categorical features into numeric representations in two primary ways. For some variables, each category was turned into its own binary column (one-hot encoding), indicating presence (1) or absence (0) of a category. For others, the categories were replaced with integers that represent different categories, effectively putting them on a numeric scale (label encoding).
+
+Regularization was implicitly applied through the default “l2” penalty in LogisticRegression. This helped keep coefficients more stable and reduced overfitting, even though the dataset and feature set were relatively simple. Without regularization, certain predictors might have dominated the model, leading to poorer generalization. Thus, yes, regularization was needed and did support the interpretability and stability of the logistic regression model.
+
+Here are some key metrics:
+* Prediction Accuracy: 0.5120
+* Prediction Error: 0.4880
+* True Positive Rate (Recall): 0.4797
+* True Negative Rate (Specificity): 0.5263
+
+The logistic regression model wasn’t the best because a prediction on whether a student would attend a public or private school was hard to predict given possible confounding variables and there were not suitable predictors.
 
 ## KNN
 
