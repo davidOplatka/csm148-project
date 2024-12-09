@@ -43,4 +43,14 @@ TODO: Maddox
 
 ## How to Reproduce Results
 
-TODO: Joseph
+1. Have Python installed with following libraries: numpy, pandas, matplotlib, seaborn, scikit-learn, and statsmodels. Install packages using:
+```
+$ pip install <package_name>
+```
+2. Download StudentPerformanceFactors.csv dataset. Use df.head(), df.info(), and df.describe() to confirm data is loaded correctly.
+3. We can drop unnecessary columns, remove rows with missing values, and correct any out-of-range values. Features like distance from home, sleep hours, school type public, and gender male were found to hinder the model, so we can drop these features. Set exam scores > 100 to be 100.
+4. Create boxplots, heatmaps, and scatterplots to confirm the relationships and patterns match those described in the report.
+5. Use the provided preprocessing functions to transform categorical variables into numeric form so that models can properly interpret all input variables. We used binary and sequential label encodings.
+6. Split the data into training and testing sets. We used a 80-20 train-test split. Then, run feature scaling code to standarize numeric values for all predictors before applying the models.
+7. Run the OLS regression model and the corresponding analysis. Then, proceed to Lasso and Ridge regression models. The code includes the necessary hyperparameters.
+8. Review metrics like MSE and R-squared. The Ridge model should yield slightly better generalization performance. Also, create a scatter plot comparing actual vs. predicted exam scores. If the points align closely with y=x, the model is performing as expected.
