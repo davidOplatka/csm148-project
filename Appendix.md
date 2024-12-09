@@ -55,27 +55,27 @@ Finally, we encoded:
 Linear Regression was used as a classification model to predict hours studied vs. exam score for a student. In our final model, we used more predictors to better predict exam score. With Linear Regression, we perform it on a training and validation set, then a test set to evaluate our performance. When comparing true to predicted values in our validation, we get the following metrics in our primary lab.
 
 Key Metrics:
-* R^2: 0.20152
-* Correlation: 0.45096
+* `R^2`: 0.20152
+* `Correlation`: 0.45096
 
 With a low R^2 followed by not a strong correlation, we saw that our model is underfitting. Thus, through ridge and lasso regression, we use 10-fold cross-validation to first select the best lambda and alpha values and then loop through to compute scores. Fitting the ridge and lasso model helps minorly, but there were not greate improvements from the linear regression model above. 
 
 Here are some metrics:
-* Lasso (Min) RMSE: 3.4267618338079435
-* Lasso (Min) Correlation Coefficient: 0.444495780036996
-* Lasso (Min) R^2: 0.19689257769408797
+* `Lasso (Min) RMSE`: 3.4267618338079435
+* `Lasso (Min) Correlation Coefficient`: 0.444495780036996
+* `Lasso (Min) R^2`: 0.19689257769408797
 
-* Lasso (1SE) RMSE: 3.472772895242439
-* Lasso (1SE) Correlation Coefficient: 0.4444957800369967
-* Lasso (1SE) R^2: 0.17518117640547648
+* `Lasso (1SE) RMSE`: 3.472772895242439
+* `Lasso (1SE) Correlation Coefficient`: 0.4444957800369967
+* `Lasso (1SE) R^2`: 0.17518117640547648
 
-* Ridge (Min) RMSE: 3.4267618338079435
-* Ridge (Min) Correlation Coefficient: 0.444495780036996
-* Ridge (Min) R^2: 0.19689257769408797
+* `Ridge (Min) RMSE`: 3.4267618338079435
+* `Ridge (Min) Correlation Coefficient`: 0.444495780036996
+* `Ridge (Min) R^2`: 0.19689257769408797
 
-* Ridge (1SE) RMSE: 3.4267618338079435
-* Ridge (1SE) Correlation Coefficient: 0.444495780036996
-* Ridge (1SE) R^2: 0.19689257769408797
+* `Ridge (1SE) RMSE`: 3.4267618338079435
+* `Ridge (1SE) Correlation Coefficient`: 0.444495780036996
+* `Ridge (1SE) R^2`: 0.19689257769408797
 
 Since there were little improvements both metrically and visually through a model, we concluded that ridge and lasso regression did not significantly help considering the use of simply one factor, that being hours studied. Given the lack of datapoints and variability, it made it difficult for the graph to use regression. Given in our final model we use multiple predictors, ridge and lasso regression can serve as more useful indicators towards performance improvement.
 
