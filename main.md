@@ -51,6 +51,8 @@ With a nice MSE and R^2 value, our model performs well, especially better than o
 
 ## How to Reproduce Results
 
+Note: refer to the code blocks in main.ipynb that correspond to these instructions.
+
 1. Have Python installed with following libraries: numpy, pandas, matplotlib, seaborn, scikit-learn, and statsmodels. Install packages using:
 ```
 $ pip install <package_name>
