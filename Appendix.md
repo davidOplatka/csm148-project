@@ -129,9 +129,9 @@ Next we create defined the **Multi-Layer Perceptron**: with two hidden layers:
   * *First Layer*: 128 neurons with ReLU activation and a dropout rate of 30%.
   * *Second Layer*: 64 neurons with ReLU activation and a dropout rate of 30%.
 
-During the training, we use *MSE* for the loss function and Adam optimizer with a learning rate of 0.01, selected after testing lternative rates (0.01, 0.005, and 0.0001). We choose to set *batch size* to be 32, balacing performance and computational efficiency and choose the number of *epochs* to be 2000.
+During the training, we use *MSE* for the loss function and Adam optimizer with a learning rate of 0.01, selected after testing the learning rates 0.01, 0.005, and 0.0001. We chose to set *batch size* to be 32, balacing performance and computational efficiency and chose the number of *epochs* to be 2000.
 
-The process of Validation and Evaluation is:
+The process of validation and evaluation is:
 At first we have overfiiting issue since we have phenomenon of low loss and high test MSE, therefore, we implement the **early stopping mechanism** which monitored validationed loss with a patience theshold of 35 epochs. Specifically, if the validation loss did not improve for 35 consecutive epochs, training stopped early to prevent overfitting.
 
 As the result, evaluation stops at *epoch 318*, we get a training loss of *33.5123*. The test loss *MSE* of *3.8128578662872314*.
