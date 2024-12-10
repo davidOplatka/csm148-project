@@ -136,7 +136,3 @@ At first we have overfiiting issue since we have phenomenon of low loss and high
 
 As the result, evaluation stops at *epoch 318*, we get a training loss of *33.5123*. The test loss *MSE* of *3.8128578662872314*.
 
-
-
-## Hyperparameter Tuning
-
