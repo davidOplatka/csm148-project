@@ -52,11 +52,48 @@ Finally, we encoded:
 
 ## Regression Analysis
 
-This is disucssed in the main document.
+Linear Regression was used as a classification model to predict hours studied vs. exam score for a student. In our final model, we used more predictors to better predict exam score. With Linear Regression, we perform it on a training and validation set, then a test set to evaluate our performance. When comparing true to predicted values in our validation, we get the following metrics in our primary lab.
+
+Key Metrics:
+* `R^2`: 0.20152
+* `Correlation`: 0.45096
+
+With a low R^2 followed by not a strong correlation, we saw that our model is underfitting. Thus, through ridge and lasso regression, we use 10-fold cross-validation to first select the best lambda and alpha values and then loop through to compute scores. Fitting the ridge and lasso model helps minorly, but there were not greate improvements from the linear regression model above. 
+
+Here are some metrics:
+* `Lasso (Min) RMSE`: 3.42676
+* `Lasso (Min) Correlation Coefficient`: 0.44449
+* `Lasso (Min) R^2`: 0.19689
+
+* `Lasso (1SE) RMSE`: 3.47277
+* `Lasso (1SE) Correlation Coefficient`: 0.44449
+* `Lasso (1SE) R^2`: 0.17518
+
+* `Ridge (Min) RMSE`: 3.42676
+* `Ridge (Min) Correlation Coefficient`: 0.44449
+* `Ridge (Min) R^2`: 0.19689
+
+* `Ridge (1SE) RMSE`: 3.42676
+* `Ridge (1SE) Correlation Coefficient`: 0.44449
+* `Ridge (1SE) R^2`: 0.19689
+
+Since there were little improvements both metrically and visually through a model, we concluded that ridge and lasso regression did not significantly help considering the use of simply one factor, that being hours studied. Given the lack of datapoints and variability, it made it difficult for the graph to use regression. Given in our final model we use multiple predictors, ridge and lasso regression can serve as more useful indicators towards performance improvement.
 
 ## Logistic Regression
 
-TODO: Joseph
+Logistic regression was used as a binary classification model to predict whether a student would attend a public or private school based on various predictors. The feature selection technique used was Recursive Feature Elimination (RFE). With RFE, the model is iteratively trained on the data, and at each step the least important features (as indicated by the model’s coefficients) are removed. This process continues until only the most influential features remain, helping to simplify the model and potentially improve its performance. From this, the key predictors were: parental involvement, access to resources, and parental education level.
+
+Since these predictors were all categorical variables, they needed to be encoded. We converted categorical features into numeric representations in two primary ways. For some variables, each category was turned into its own binary column (one-hot encoding), indicating presence (1) or absence (0) of a category. For others, the categories were replaced with integers that represent different categories, effectively putting them on a numeric scale (label encoding).
+
+Regularization was implicitly applied through the default “l2” penalty in LogisticRegression. This helped keep coefficients more stable and reduced overfitting, even though the dataset and feature set were relatively simple. Without regularization, certain predictors might have dominated the model, leading to poorer generalization. Thus, yes, regularization was needed and did support the interpretability and stability of the logistic regression model.
+
+Here are some key metrics:
+* Prediction Accuracy: 0.5120
+* Prediction Error: 0.4880
+* True Positive Rate (Recall): 0.4797
+* True Negative Rate (Specificity): 0.5263
+
+The logistic regression model wasn’t the best because a prediction on whether a student would attend a public or private school was hard to predict given possible confounding variables and there were not suitable predictors.
 
 ## KNN
 
