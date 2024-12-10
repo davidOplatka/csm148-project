@@ -60,7 +60,11 @@ TODO: Joseph
 
 ## KNN
 
-TODO: Henry tk
+The overall goal of our project was to predict student exam scores from data. We wanted to predict a continuous variable rather than a discrete one, so it wasn't really a classification project. Our goal was more of a regression. With that being said KNN was not a very successful classifier, at least not in the way it was implemented.
+
+We tried to classify whether a given student attended public or private school using the K Nearest Neighbors algorithm. First, the categorical data values were converted to numeric values using the steps mentioned in the Data Preprocessing section. Then the train-val-test split was performed. Next, the data was standardized, and then fed into the K-Nearest neighbors algorithm. It was not mean-centered first, because the distance calculations are blind to the center of the data. It would not have changed the outcome, so the data was simply scaled along each of the axes to have a standard deviation of 1.
+
+Following this, the classifier was run and confusion matricies generated for various values of k. They were all terrible, in particular, they predicted public school way too often on the validation set, which appeared in the confusion matrix as false positives. Many measures of performance were tried, such as accuracy, precision, recall, F1 score, and entropy, each with dozens of different values of k. They all had many false positives, so the metric used to select the model was precision, since it penalizes false positives the most heavily. Even so, the classifier tended to predict public school nearly every time, unless k was small (1 or 3) and/or the data point in question was from the training set itself. The best model on the validation set had k=5, so that was used.
 
 ## PCA and Clustering
 
