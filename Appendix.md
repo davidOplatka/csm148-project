@@ -52,13 +52,12 @@ Finally, we encoded:
 
 ## Regression Analysis
 
-Linear Regression was used as a regression model to predict hours studied vs. exam score for a student. In our final model, we used more predictors to better predict exam score. With Linear Regression, we perform it on a training and validation set, then a test set to evaluate our performance. When comparing true to predicted values in our validation, we get the following metrics in our primary lab.
+Simple linear regression was used to predict students' exam scores based on their hours studied. In our final model, we used more predictors to better predict exam score. We built our model using a training and validation set and evaluated our model's performance with a test set. When comparing the true and predicted values in our validation set, we got the following metrics in our primary lab:
 
-Key Metrics:
 * $R^2$: 0.20152
-* `Correlation`: 0.45096
+* Correlation: 0.45096
 
-With a low $R^2$ followed by not a strong correlation, we saw that our model is underfitting. Thus, through ridge and lasso regression, we use 10-fold cross-validation to first select the best lambda and alpha values and then loop through to compute scores. Fitting the ridge and lasso model helps minorly, but there were not greate improvements from the linear regression model above. 
+With a low $R^2$ followed by a weak correlation, we see that our model is underfitting. We then attempted to fit lasso and ridge regression models, using 10-fold cross-validation to first select the best lambda and alpha values and then loop through to compute evaluation metrics. Fitting the ridge and lasso model helps minorly, but we observed minimal improvements from the linear regression model above. 
 
 Here are some metrics:
 * Lasso (Min) RMSE: 3.42676
@@ -77,15 +76,15 @@ Here are some metrics:
 * Ridge (1SE) Correlation Coefficient: 0.44449
 * Ridge (1SE) $R^2$: 0.19689
 
-Since there were little improvements both metrically and visually through a model, we concluded that ridge and lasso regression did not significantly help considering the use of simply one factor, that being hours studied. Given the lack of datapoints and variability, it made it difficult for the graph to use regression. Given in our final model we use multiple predictors, ridge and lasso regression can serve as more useful indicators towards performance improvement.
+Since there were little improvements both metrically and visually through a model, we concluded that ridge and lasso regression did not significantly help considering the use of simply one factor, that being hours studied. Given the lack of data points and variability, it was difficult to accurately predict students' exam scores solely based on this one variable. Given that our final model uses many predictors, ridge and lasso regression can serve as more useful indicators towards performance improvement (see main document).
 
 ## Logistic Regression
 
-Logistic regression was used as a binary classification model to predict whether a student would attend a public or private school based on various predictors. The feature selection technique used was Recursive Feature Elimination (RFE). With RFE, the model is iteratively trained on the data, and at each step the least important features (as indicated by the model’s coefficients) are removed. This process continues until only the most influential features remain, helping to simplify the model and potentially improve its performance. From this, the key predictors were: parental involvement, access to resources, and parental education level.
+Logistic regression was used as a binary classification model to predict whether a student would attend a public or private school based on various predictors. The feature selection technique used was Recursive Feature Elimination (RFE). With RFE, the model is iteratively trained on the data, and at each step, the least important features (as indicated by the model’s coefficients) are removed. This process continues until only the most influential features remain, helping to simplify the model and potentially improve its performance. From this, the key predictors were: `Parental_Involvement`, `Access_to_Resources`, and `Parental_Education_Level`.
 
 Since these predictors were all categorical variables, they needed to be encoded. We converted categorical features into numeric representations in two primary ways. For some variables, each category was turned into its own binary column (one-hot encoding), indicating presence (1) or absence (0) of a category. For others, the categories were replaced with integers that represent different categories, effectively putting them on a numeric scale (label encoding).
 
-Regularization was implicitly applied through the default “l2” penalty in LogisticRegression. This helped keep coefficients more stable and reduced overfitting, even though the dataset and feature set were relatively simple. Without regularization, certain predictors might have dominated the model, leading to poorer generalization. Thus, yes, regularization was needed and did support the interpretability and stability of the logistic regression model.
+Regularization was implicitly applied through the default `l2` penalty in scikit-learn's `LogisticRegression` model. This helped keep coefficients more stable and reduced overfitting, even though the dataset and feature set were relatively simple. Without regularization, certain predictors might have dominated the model, leading to poor generalization. Thus, regularization was needed and did support the interpretability and stability of the logistic regression model.
 
 Here are some key metrics:
 * Prediction Accuracy: 0.5120
@@ -93,15 +92,15 @@ Here are some key metrics:
 * True Positive Rate (Recall): 0.4797
 * True Negative Rate (Specificity): 0.5263
 
-The logistic regression model wasn’t the best because a prediction on whether a student would attend a public or private school was hard to predict given possible confounding variables and there were not suitable predictors.
+The logistic regression model wasn’t the best because a prediction on whether a student would attend a public or private school was hard to predict given possible confounding variables and a lack of suitable predictors.
 
 ## KNN
 
 The overall goal of our project was to predict student exam scores from data. We wanted to predict a continuous variable rather than a discrete one, so it wasn't really a classification project. Our goal was more of a regression. With that being said KNN was not a very successful classifier, at least not in the way it was implemented.
 
-We tried to classify whether a given student attended public or private school using the K Nearest Neighbors algorithm. First, the categorical data values were converted to numeric values using the steps mentioned in the Data Preprocessing section. Then the train-val-test split was performed. Next, the data was standardized, and then fed into the K-Nearest neighbors algorithm. It was not mean-centered first, because the distance calculations are blind to the center of the data. It would not have changed the outcome, so the data was simply scaled along each of the axes to have a standard deviation of 1.
+We tried to classify whether a given student attended public or private school using the K-nearest neighbors algorithm. First, the categorical data values were converted to numeric values using the steps mentioned in the Data Preprocessing section. Then, the train-val-test split was performed. Next, the data was standardized, and then fed into the K-Nearest neighbors algorithm. It was not mean-centered first, because the distance calculations are blind to the center of the data. It would not have changed the outcome, so the data was simply scaled along each of the axes to have a standard deviation of 1.
 
-Following this, the classifier was run and confusion matricies generated for various values of k. They were all terrible, in particular, they predicted public school way too often on the validation set, which appeared in the confusion matrix as false positives. Many measures of performance were tried, such as accuracy, precision, recall, F1 score, and entropy, each with dozens of different values of k. They all had many false positives, so the metric used to select the model was precision, since it penalizes false positives the most heavily. Even so, the classifier tended to predict public school nearly every time, unless k was small (1 or 3) and/or the data point in question was from the training set itself. The best model on the validation set had k=5, so that was used.
+Following this, the classifier was run and confusion matricies generated for various values of k. They were all terrible, in particular, they predicted public school way too often on the validation set (a likely result of class imbalance), which appeared in the confusion matrix as false positives. Many measures of performance were tried, such as accuracy, precision, recall, F1 score, and entropy, each with dozens of different values of k. They all had many false positives, so the metric used to select the model was precision, since it penalizes false positives the most heavily. Even so, the classifier tended to predict public school nearly every time, unless k was small (1 or 3) and/or the data point in question was from the training set itself. The best model on the validation set had k=5, so that was used.
 
 ## PCA and Clustering
 
@@ -121,18 +120,15 @@ This told us that our final model would likely include most of these variables (
 
 ## Neural Network
 
-The final method we implemented to predict students' Exam Scores was a Multi-Layer Perceptron (MLP) neural network. Below are the key steps of our process:
+The final method we implemented to predict students' exam scores was a Multi-Layer Perceptron (MLP) neural network. Below are the key steps of our process:
 
-We used the cleaned dataset `StudentPerformanceFactorsCleaned.csv` and performed further preprocessing before feeding it into the neural network including standardizing all numerical columns to ensure all features were on the same scale, preventing any one feature from dominating the model; one-hot ecoding all categorical columns into numeric form with values of 0 and 1; splitting the dataset into training, validation, and test sets in proportions of 60%, 20%, and 20%, respectively; finally converting the preprocessed data into PyTorch tensors for compatibility with the neural network.
+We used the cleaned dataset `StudentPerformanceFactorsCleaned.csv` and performed further preprocessing before feeding it into the neural network, including standardizing all numerical columns to ensure all features were on the same scale, preventing any one feature from dominating the model; one-hot ecoding all categorical columns into numeric form with values of 0 and 1; splitting the dataset into training, validation, and test sets in proportions of 60%, 20%, and 20%, respectively; and converting the preprocessed data into PyTorch tensors for compatibility with the neural network.
 
-Next we create defined the **Multi-Layer Perceptron**: with two hidden layers:
+Next, we create defined the **Multi-Layer Perceptron**: with two hidden layers:
   * *First Layer*: 128 neurons with ReLU activation and a dropout rate of 30%.
   * *Second Layer*: 64 neurons with ReLU activation and a dropout rate of 30%.
 
-During the training, we use *MSE* for the loss function and Adam optimizer with a learning rate of 0.01, selected after testing the learning rates 0.01, 0.005, and 0.0001. We chose to set *batch size* to be 32, balacing performance and computational efficiency and chose the number of *epochs* to be 2000.
+During the training, we used mean square error as the loss function and Adam as the optimizer with a learning rate of 0.01, which was selected after testing the learning rates 0.01, 0.005, and 0.0001. We chose to set *batch size* as 32&mdash;balacing performance and computational efficiency&mdash;and chose the number of *epochs* to be 2000.
 
-The process of validation and evaluation is:
-At first we have overfiiting issue since we have phenomenon of low loss and high test MSE, therefore, we implement the **early stopping mechanism** which monitored validationed loss with a patience theshold of 35 epochs. Specifically, if the validation loss did not improve for 35 consecutive epochs, training stopped early to prevent overfitting.
-
-As the result, evaluation stops at *epoch 318*, we get a training loss of *33.5123*. The test loss *MSE* of *3.8128578662872314*.
-
+For validating and evaluating our model, we first noticed overfiiting issues since we had a low training loss and high test MSE. Therefore, we implemented **early stopping**, which monitored validationed loss with a patience theshold of 35 epochs.
+As a result, the model stopped training after *318 epochs*, achieving a training loss of *33.5123* and test *MSE* of 3.8128578662872314.
