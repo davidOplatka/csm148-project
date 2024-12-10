@@ -52,7 +52,7 @@ Finally, we encoded:
 
 ## Regression Analysis
 
-Linear Regression was used as a classification model to predict hours studied vs. exam score for a student. In our final model, we used more predictors to better predict exam score. With Linear Regression, we perform it on a training and validation set, then a test set to evaluate our performance. When comparing true to predicted values in our validation, we get the following metrics in our primary lab.
+Linear Regression was used as a regression model to predict hours studied vs. exam score for a student. In our final model, we used more predictors to better predict exam score. With Linear Regression, we perform it on a training and validation set, then a test set to evaluate our performance. When comparing true to predicted values in our validation, we get the following metrics in our primary lab.
 
 Key Metrics:
 * $R^2$: 0.20152
