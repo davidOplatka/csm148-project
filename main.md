@@ -43,7 +43,17 @@ We will further discuss the results of our model in the next section.
 
 ## Results
 
-In our results we notice that our Ridge model performs exceptionally well, close to the actual exam scores when comparing actual vs. predicted scores, fitting a `y=x` line almost perfectly. With a `R^2` of 0.72, we notice that this model captures our variance quite accurately as well.
+With a 5-fold CV for both ridge and lasso, we further fit the model to get the following alpha and coefficient values. We choose K-fold CV as it most fits our ridge and lasso model that we are looking for.
+
+Lasso Alpha and Coefficients:
+* Best Alpha is $0.0022$
+* Best Coefficients are [ 1.719  2.287  1.025  1.038   0.530  0.717  0.493  0.806  0.638  0.516  0.529  0.501  0.195 -0.895  0.467]
+
+Ridge Alpha and Coefficients:
+* Best Alpha is 9.0
+* Best Coefficients are [ 1.719  2.286  1.026  1.039  0.535   0.719  0.496  0.817  0.639  0.519  0.533  0.504 0.197 -0.902  0.469]
+  
+Thus, in our results we notice that our Ridge model performs exceptionally well, close to the actual exam scores when comparing actual vs. predicted scores, fitting a `y=x` line almost perfectly. With a `R^2` of 0.72, we notice that this model captures our variance quite accurately as well.
 
 Key Metrics:
 * `Ridge CV MSE`: 3.066807
