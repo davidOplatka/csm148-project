@@ -9,7 +9,11 @@ TODO
 
 ## Problem Overview
 
-The goal of this project is to predict students' final exam grades based on various features and data provided in the dataset.
+The primary ojective of this project is to identify the key variables that have a significant impact on students' academic performance, as measured by their final exam grades. By analyzing the available dataset the team aims to develop a predictive model that can forcast students' exam scores.
+
+This model is valuable as it offers important implications. It can help student identify areas for improvement and guide their study efforts. It can offer educators and administrators insights on how to build a more supportive environment to enhance academic performance.
+
+Therefore, the team aims to find a simple yet effective solution that provides highly interpretable and actionable insights into the drivers of student success. 
 
 ## Key Methodologies
 
