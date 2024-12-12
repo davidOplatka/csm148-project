@@ -55,7 +55,7 @@ Ridge Alpha and Coefficients:
 * Best Coefficients are [ 1.719  2.286  1.026  1.039  0.535   0.719  0.496  0.817  0.639  0.519  0.533  0.504 0.197 -0.902  0.469]
 * Best Intercept is 61.595
 
-Note: the variables corresponding to the coefficients in these models are ... INCLUDE FEATURES
+Note: the variables corresponding to the coefficients in these models are `Hours_Studied`, `Attendance`, `Parental_Involvement`, `Access_to_Resources`, `Extracurricular_Activities_Yes`, `Previous_Scores`, `Motivation_Level`, `Internet_Access_Yes`, `Tutoring_Sessions`, `Family_Income`, `Teacher_Quality`, `Peer_Influence`, `Physical_Activity`, `Learning_Disabilities_Yes`, `Parental_Education_Level`.
   
 Thus, in our results we notice that our ridge regression model performs exceptionally well, making predictions that are close to the actual exam scores. When plotting a scatterplot of the actual vs. predicted scores, nearly all of the points are very close to the line `y=x`, demonstrating the strong accuracy of our model. With a `R^2` of about 0.72, we notice that this model captures the variance in the test scores quite accurately as well.
 
@@ -66,6 +66,8 @@ Key Metrics:
 * `LASSO CV R^2`: 0.719646
 
 With a nice MSE and R^2 value, our ridge regression model performs well, which is why we picked it as our best and final model. While most predicted scores mostly align with our actual scores, we notice some outliers that are present. A small number of students scored significantly higher than what was predicted, possibly showing factors that influenced score but weren't a feature in the dataset. What this could suggest is that while the model performs overall well, there are opportunities to incorporate additional features or further refine preprocessing, while preventing overfitting as well.
+
+Since we standardized our numeric features before fitting our models, we can use the magnitudes of the coefficients to compare the importance of the features. As we can see, `Attendance` (2.286) and `Hours_Studied` (1.719) have the greatest magnitudes among all features, so these are the most important features in our predictive model. We also see large coefficients for `Access_to_Resources` (1.039) and `Learning_Disability_Yes` (-0.902), which may highlight some of the social challenges or inequities that put some students at a disadvantage when it comes to evaluation through exam scores. This gives us some insight into the strongest contributors in our model. However, we must be clear that we cannot conclude a causal link between these students' exam scores and these features because this is an observational study, not an experiment. Thus, this evaluation must be taken with extreme caution, and further studies will be needed to assess the true importance of these individual features on students' testing performance.
 
 ## How to Reproduce Results
 
