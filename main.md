@@ -5,7 +5,38 @@ We also offer instructions for how to run our code to reproduce our results.
 
 ## The Dataset
 
-TODO
+We used the student performance dataset, found on kaggle at:
+* https://www.kaggle.com/datasets/lainguyn123/student-performance-factors
+
+This dataset tracks student performance on a final exam, as well as sevaral potential contributing factors to that performance.
+
+We chose this dataset because we were interested in student performance, being students ourselves who want to optimize our own performace. We wanted to see if there was anything we could do to improve our own performance. Distance from home, parenal education level, and teacher quality had a few missing values, while none of the others did. Next, we have a descrition of each of the features of the data.
+
+### Numeric Features
+
+* The number of hours studied
+* Percentage of Classes Attended
+* Hours slept per night
+* Previous exam scores
+* Tutoring sessions attended per month
+* Amount of physical activity
+* Final exam score
+
+### Categorical Features
+
+* Parental involvement (Low, Medium, High)
+* Access to educational resources (Low, Medium, High)
+* Wether or not they participated in extracurriculars
+* The student's motivation level (Low, Medium, High)
+* Whether the student had access to the internet
+* The student's family income (Low, Medium, High)
+* Teacher Quality (Low, Medium, High)
+* Whether they attended public or private school
+* How peers influenced academic performace (Positive, Neutral, Negative)
+* Whether the student had learning disabilities
+* The student's parents' education level (High School, College, Postgraduate)
+* The distance from the student's home to their school (Near, Moderate, Far)
+* The student's gender (Male, Female)
 
 ## Problem Overview
 
@@ -65,11 +96,13 @@ Key Metrics:
 * `LASSO CV MSE`: 3.067022
 * `LASSO CV R^2`: 0.719646
 
-With a nice MSE and R^2 value, our ridge regression model performs well, which is why we picked it as our best and final model. While most predicted scores mostly align with our actual scores, we notice some outliers that are present. A small number of students scored significantly higher than what was predicted, possibly showing factors that influenced score but weren't a feature in the dataset. What this could suggest is that while the model performs overall well, there are opportunities to incorporate additional features or further refine preprocessing, while preventing overfitting as well.
+With a nice MSE and R^2 value, our ridge regression model performs well, which is why we picked it as our best and final model. While most predicted scores mostly align with our actual scores, we notice some outliers that are present. A small number of students scored significantly higher than what was predicted, suggesting the existence of factors that influenced score but weren't features in the dataset. What this could suggest is that while the model performs overall well, there are opportunities to incorporate additional features or further refine preprocessing, while preventing overfitting as well.
 
 Since we standardized our numeric features before fitting our models, we can use the magnitudes of the coefficients to compare the importance of the features. As we can see, `Attendance` (2.286) and `Hours_Studied` (1.719) have the greatest magnitudes among all features, so these are the most important features in our predictive model. We also see large coefficients for `Access_to_Resources` (1.039) and `Learning_Disability_Yes` (-0.902), which may highlight some of the social challenges or inequities that put some students at a disadvantage when it comes to evaluation through exam scores. This gives us some insight into the strongest contributors in our model. However, we must be clear that we cannot conclude a causal link between these students' exam scores and these features because this is an observational study, not an experiment. Thus, this evaluation must be taken with extreme caution, and further studies will be needed to assess the true importance of these individual features on students' testing performance.
 
 ## How to Reproduce Results
+
+### Method 1
 
 Note: refer to the code blocks in main.ipynb that correspond to these instructions.
 
@@ -77,10 +110,23 @@ Note: refer to the code blocks in main.ipynb that correspond to these instructio
 ```
 $ pip install <package_name>
 ```
-2. Download StudentPerformanceFactors.csv dataset. Use df.head(), df.info(), and df.describe() to confirm data is loaded correctly.
+2. Download StudentPerformanceFactors.csv dataset from the kaggle link in the "The Dataset" section. Use df.head(), df.info(), and df.describe() to confirm data is loaded correctly.
 3. We can drop unnecessary columns, remove rows with missing values, and correct any out-of-range values. Features like distance from home, sleep hours, school type public, and gender male were found to hinder the model, so we can drop these features. Set exam scores > 100 to be 100.
 4. Create boxplots, heatmaps, and scatterplots to confirm the relationships and patterns match those described in the report.
 5. Use the provided preprocessing functions to transform categorical variables into numeric form so that models can properly interpret all input variables. We used binary and sequential label encodings.
 6. Split the data into training and testing sets. We used a 80-20 train-test split. Then, run feature scaling code to standarize numeric values for all predictors before applying the models.
 7. Run the OLS regression model and the corresponding analysis. Then, proceed to Lasso and Ridge regression models. The code includes the necessary hyperparameters.
 8. Review metrics like MSE and R-squared. The Ridge model should yield slightly better generalization performance. Also, create a scatter plot comparing actual vs. predicted exam scores. If the points align closely with y=x, the model is performing as expected.
+
+### Method 2
+
+Alternatively, simply run all cells in order in our provided main.ipynb file, possibly installing packages in a newcell at the top beforehand. This code snippet will install all needed packages and can be copied and pasted into a cell at the beginning of the linear modeling file.
+
+```
+$ pip install numpy
+$ pip install pandas
+$ pip install matplotlib
+$ pip install seaborn
+$ pip install scikit-learn
+$ pip install statsmodels
+```
