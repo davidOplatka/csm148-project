@@ -9,11 +9,11 @@ TODO
 
 ## Problem Overview
 
-The primary ojective of this project is to identify the key variables that have a significant impact on students' academic performance, as measured by their final exam grades. By analyzing the available dataset the team aims to develop a predictive model that can forcast students' exam scores.
+The primary ojective of this project is to identify the key factors that influence a students' academic performance, as measured by their final exam grades. By analyzing the available dataset, our team sought to develop a predictive model that can forcast students' exam scores.
 
-This model is valuable as it offers important implications. It can help student identify areas for improvement and guide their study efforts. It can offer educators and administrators insights on how to build a more supportive environment to enhance academic performance.
+This model is valuable as it offers important implications. It can help students identify some changes (such as attending class or tutoring sessions) that may improve their grades and overall academic performance. It can also offer educators and administrators insights on how to build a more supportive environment to enhance academic performance. Finally, we might gain some insight into some inequities such as how students' varying access to resources or their parents' education level may influence their academic success.
 
-Therefore, the team aims to find a simple yet effective solution that provides highly interpretable and actionable insights into the drivers of student success. 
+Therefore, our team hoped to find a simple, yet effective solution that provided highly interpretable results into the drivers of student success.
 
 ## Key Methodologies
 
@@ -43,7 +43,7 @@ We will further discuss the results of our model in the next section.
 
 ## Results
 
-With a 5-fold CV for both ridge and lasso, we further fit the model to get the following alpha and coefficient values. We choose K-fold CV as it most fits our ridge and lasso model that we are looking for.
+We utilized 5-fold CV for both our ridge and lasso models, resulting in the following alpha and model coefficient values. We choose to use K-fold CV because it helped us find the best regularization coefficients without overfitting to the training data.
 
 Lasso Alpha and Coefficients:
 * Best Alpha is $0.0022$
@@ -53,7 +53,7 @@ Ridge Alpha and Coefficients:
 * Best Alpha is 9.0
 * Best Coefficients are [ 1.719  2.286  1.026  1.039  0.535   0.719  0.496  0.817  0.639  0.519  0.533  0.504 0.197 -0.902  0.469]
   
-Thus, in our results we notice that our Ridge model performs exceptionally well, close to the actual exam scores when comparing actual vs. predicted scores, fitting a `y=x` line almost perfectly. With a `R^2` of 0.72, we notice that this model captures our variance quite accurately as well.
+Thus, in our results we notice that our ridge regression model performs exceptionally well, making predictions that are close to the actual exam scores. When plotting a scatterplot of the actual vs. predicted scores, nearly all of the points are very close to the line `y=x`, demonstrating the strong accuracy of our model. With a `R^2` of about 0.72, we notice that this model captures the variance in the test scores quite accurately as well.
 
 Key Metrics:
 * `Ridge CV MSE`: 3.066807
@@ -61,7 +61,7 @@ Key Metrics:
 * `LASSO CV MSE`: 3.067022
 * `LASSO CV R^2`: 0.719646
 
-With a nice MSE and R^2 value, our model performs well, especially better than our Lasso model, which is why we pick our Ridge model over our Lasso model. While most predicted scores mostly align with our actual scores, we notice some outliers that are present. A small number of students scored significantly higher than what was predicted, possibly showing factors that influenced score but weren't a feature in the dataset. What this could suggest is that while the model performs overall well, there are opportunities to incorporate additional features or further refine preprocessing, while preventing overfitting as well.
+With a nice MSE and R^2 value, our ridge regression model performs well, which is why we picked it as our best and final model. While most predicted scores mostly align with our actual scores, we notice some outliers that are present. A small number of students scored significantly higher than what was predicted, possibly showing factors that influenced score but weren't a feature in the dataset. What this could suggest is that while the model performs overall well, there are opportunities to incorporate additional features or further refine preprocessing, while preventing overfitting as well.
 
 ## How to Reproduce Results
 
