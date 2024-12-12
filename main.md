@@ -46,12 +46,16 @@ We will further discuss the results of our model in the next section.
 We utilized 5-fold CV for both our ridge and lasso models, resulting in the following alpha and model coefficient values. We choose to use K-fold CV because it helped us find the best regularization coefficients without overfitting to the training data.
 
 Lasso Alpha and Coefficients:
-* Best Alpha is $0.0022$
+* Best Alpha is 0.0022
 * Best Coefficients are [ 1.719  2.287  1.025  1.038   0.530  0.717  0.493  0.806  0.638  0.516  0.529  0.501  0.195 -0.895  0.467]
+* Best Intercept is 61.623
 
 Ridge Alpha and Coefficients:
 * Best Alpha is 9.0
 * Best Coefficients are [ 1.719  2.286  1.026  1.039  0.535   0.719  0.496  0.817  0.639  0.519  0.533  0.504 0.197 -0.902  0.469]
+* Best Intercept is 61.595
+
+Note: the variables corresponding to the coefficients in these models are ... INCLUDE FEATURES
   
 Thus, in our results we notice that our ridge regression model performs exceptionally well, making predictions that are close to the actual exam scores. When plotting a scatterplot of the actual vs. predicted scores, nearly all of the points are very close to the line `y=x`, demonstrating the strong accuracy of our model. With a `R^2` of about 0.72, we notice that this model captures the variance in the test scores quite accurately as well.
 
